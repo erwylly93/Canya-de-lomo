@@ -5,7 +5,7 @@ class Admin::SupplierController < ApplicationController
   end
 
   def create
-    @supplier = Supplier.new(supplier_params)
+    @supplier = Supplier.new(params[:supplier])
     if @supplier.save
         flash[:notice] = "El proveedor #{@supplier.name} ha sido creado."
         redirect_to :action => 'index'
@@ -15,10 +15,6 @@ class Admin::SupplierController < ApplicationController
     end
   end
 
-  def supplier_params
-    params.require(:supplier).permit(:id, :name, :street, :city, :phone)
-  end
-
   def edit
     @supplier = Supplier.find(params[:id])
     @page_title = 'Editar proveedor'
@@ -26,7 +22,7 @@ class Admin::SupplierController < ApplicationController
 
   def update
     @supplier = Supplier.find(params[:id])
-    if @supplier.update_attributes(supplier_params)
+    if @supplier.update_attributes(params[:supplier])
       flash[:notice] = "El proveedor ha sido actualizado."
       redirect_to :action => 'show', :id => @supplier
     else

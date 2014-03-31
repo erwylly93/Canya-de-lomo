@@ -1,0 +1,12 @@
+<table>
+	<tr>
+		<th>Nombre</th>
+		<th>Ciudad</th>
+		<th>Calle</th>
+		<th>Teléfono</th>
+	</tr>
+
+	<%= render :partial => 'supplier', :collection => @suppliers %>
+</table>
+
+<%= link_to 'Nuevo proveedor', :action => 'new' %>

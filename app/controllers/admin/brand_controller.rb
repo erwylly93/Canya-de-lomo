@@ -10,7 +10,7 @@ class Admin::BrandController < ApplicationController
         flash[:notice] = "La marca #{@brand.name} ha sido creada."
         redirect_to :action => 'index'
     else
-        @page_title = "Crear nuevo marca"
+        @page_title = "Crear nueva marca"
         render :action => 'new'
     end
   end
@@ -40,7 +40,7 @@ class Admin::BrandController < ApplicationController
 
   def show
     @brand = Brand.find(params[:id])
-    @page_title = Brand.name
+    @page_title = @brand.name
   end
 
   def index

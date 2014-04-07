@@ -40,7 +40,7 @@ class Admin::SupplierController < ApplicationController
 
   def show
     @supplier = Supplier.find(params[:id])
-    @page_title = Supplier.name
+    @page_title = @supplier.name
   end
 
   def index

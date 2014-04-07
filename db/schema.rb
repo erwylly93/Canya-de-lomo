@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140407170846) do
+ActiveRecord::Schema.define(:version => 20140407222602) do
 
   create_table "brands", :force => true do |t|
     t.string   "name",                    :null => false
@@ -21,6 +21,31 @@ ActiveRecord::Schema.define(:version => 20140407170846) do
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
   end
+
+  create_table "products", :force => true do |t|
+    t.string   "name",                     :null => false
+    t.integer  "brand_id",                 :null => false
+    t.string   "type"
+    t.text     "description"
+    t.string   "origin"
+    t.float    "price"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+    t.string   "cover_image_file_name"
+    t.string   "cover_image_content_type"
+    t.integer  "cover_image_file_size"
+    t.datetime "cover_image_updated_at"
+  end
+
+  add_index "products", ["brand_id"], :name => "fk_products_brands"
+
+  create_table "products_suppliers", :force => true do |t|
+    t.integer "supplier_id", :null => false
+    t.integer "product_id",  :null => false
+  end
+
+  add_index "products_suppliers", ["product_id"], :name => "fk_products_suppliers_products"
+  add_index "products_suppliers", ["supplier_id"], :name => "fk_products_suppliers_suppliers"
 
   create_table "suppliers", :force => true do |t|
     t.string   "name"

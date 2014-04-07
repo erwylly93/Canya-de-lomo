@@ -22,6 +22,15 @@ end
 
 gem 'jquery-rails'
 
+# Para subir archivos
+gem 'paperclip', '3.3.1'
+
+# Para paginar
+gem 'will_paginate', '3.0.3'
+
+# Para textilze
+gem 'RedCloth'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

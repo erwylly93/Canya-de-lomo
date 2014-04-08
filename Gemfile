@@ -29,7 +29,7 @@ gem 'paperclip', '3.3.1'
 gem 'will_paginate', '3.0.3'
 
 # Para textilze
-gem 'RedCloth'
+gem 'formatize', '1.1.0'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

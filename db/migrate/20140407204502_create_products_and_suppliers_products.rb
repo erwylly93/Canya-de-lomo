@@ -7,6 +7,7 @@ class CreateProductsAndSuppliersProducts < ActiveRecord::Migration
   		t.column :description, :text
   		t.column :origin, :string
   		t.column :price, :float
+      t.column :weight, :float
   		t.timestamps
   	end
 

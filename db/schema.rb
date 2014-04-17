@@ -15,8 +15,9 @@ ActiveRecord::Schema.define(:version => 20140407222602) do
 
   create_table "brands", :force => true do |t|
     t.string   "name",                    :null => false
-    t.string   "phone",      :limit => 9, :null => false
+    t.string   "phone",      :limit => 9
     t.string   "city"
+    t.string   "province"
     t.string   "street"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
@@ -29,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20140407222602) do
     t.text     "description"
     t.string   "origin"
     t.float    "price"
+    t.float    "weight"
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
     t.string   "cover_image_file_name"
@@ -48,9 +50,10 @@ ActiveRecord::Schema.define(:version => 20140407222602) do
   add_index "products_suppliers", ["supplier_id"], :name => "fk_products_suppliers_suppliers"
 
   create_table "suppliers", :force => true do |t|
-    t.string   "name"
+    t.string   "name",                    :null => false
     t.string   "street"
     t.string   "city"
+    t.string   "province"
     t.string   "phone",      :limit => 9
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false

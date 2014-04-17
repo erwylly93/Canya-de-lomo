@@ -41,7 +41,7 @@
 </div>
 
 <div class="field">
-  <p><label for="product_weight">Peso (Kg)</label><br/>
+  <p><label for="product_weight">Peso (KG)</label><br/>
   <%= text_field 'product', 'weight' %></p>
 </div>
 

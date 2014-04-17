@@ -14,14 +14,11 @@
 <p><label for="supplier_name">Nombre</label><br/>
 <%= text_field 'supplier', 'name' %></p>
 
-<p><label for="supplier_street">Calle</label><br/>
-<%= text_field 'supplier', 'street' %></p>
-
 <p><label for="supplier_city">Ciudad</label><br/>
 <%= text_field 'supplier', 'city' %></p>
 
-<p><label for="supplier_province">Provincia</label><br/>
-<%= text_field 'supplier', 'province' %></p>
+<p><label for="supplier_street">Calle</label><br/>
+<%= text_field 'supplier', 'street' %></p>
 
 <p><label for="supplier_phone">Teléfono</label><br/>
 <%= text_field 'supplier', 'phone' %></p>

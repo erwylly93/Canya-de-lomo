@@ -1,5 +1,13 @@
 Eshop::Application.routes.draw do
 
+  get "catalog/index"
+
+  get "catalog/show"
+
+  get "catalog/search"
+
+  get "catalog/latest"
+
   # get "product/admin/product"
 
   # get "product/new"
@@ -32,10 +40,16 @@ Eshop::Application.routes.draw do
 
   root to: 'about#index'
 
+  match 'catalog' => 'catalog#index'
   match 'about' => 'about#index'
   match 'admin/supplier' => 'admin/supplier#index'
   match 'admin/brand' => 'admin/brand#index'
   match 'admin/product' => 'admin/product#index'
+
+  get 'catalog/show'
+  match 'catalog/show/:id' => 'catalog#show'
+  get 'catalog/index'
+  get 'catalog/latest'
 
   
   get 'admin/supplier/new'

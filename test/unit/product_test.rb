@@ -31,6 +31,27 @@ class ProductTest < ActiveSupport::TestCase
  		product = Product.new(:name => 'Zorro curado', :description => 'Zorruno weno weno')
  		assert_equal 'Zorruno weno weno' , product.getdescription
  	end
+=begin 	
+ 	def test_ferret
+		 assert Product.search :name_contains => 'Producto 1'
+
+    assert_difference Product, :count do
+      product = Product.new :name => 'Producto 1',
+														:type => 'Tipo 1',
+														:description => 'Descripcion producto 1',
+														:origin => 'Origen producto 1',
+														:price => 12.0,
+														:weight => 2.0
+      product.suppliers << Supplier.create(:name => "Proveedor 41")
+      product.brand = Brand.find(1)
+      assert product.valid?
+      product.save
+
+      assert_equal 1, Product.search(:name_contains => 'Producto').count
+      assert_equal 1, Product.search(:suppliers_name_contains => 'Proveedor').count
+		end
+	end
+=end
 
 end
 

@@ -1,8 +1,101 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+  
+product1:
+  id:	1
+  name: 'Producto 1'
+  brand_id: 1
+  type: 'Tipo 1'
+  description: 'Descripcion producto 1'
+  origin: 'Origen producto 1'
+  price: 12
+  weight: 2
 
-one:
-  name: MyString
-  weight: 9.99
-  price: 9.99
-  brand_id: 980190962
+product2:
+  id: 2
+  name: 'Producto 2'
+  brand_id: 1
+  type: 'Tipo 2'
+  description: 'Descripcion producto 2'
+  origin: 'Origen producto 2'
+  price: 5.2
+  weight: 0.9
 
+product3:
+  id: 3
+  name: 'Producto 3'
+  brand_id: 1
+  type: 'Tipo 3'
+  description: 'Descripcion producto 3'
+  origin: 'Origen producto 3'
+  price: 6.7
+  weight: 1.25
+  
+product4:
+  id: 4
+  name: 'Producto 4'
+  brand_id: 2
+  type: 'Tipo 2'
+  description: 'Descripcion producto 4'
+  origin: 'Origen producto 4'
+  price: 3.5
+  weight: 1.2
+
+product5:
+  id: 5
+  name: 'Producto 5'
+  brand_id: 1
+  type: 'Tipo 3'
+  description: 'Descripcion producto 5'
+  origin: 'Origen producto 5'
+  price: 2.54
+  weight: 3.2
+  
+product6:
+  id: 6
+  name: 'Producto 6'
+  brand_id: 2
+  type: 'Tipo 1'
+  description: 'Descripcion producto 6'
+  origin: 'Origen producto 6'
+  price: 4.3
+  weight: 1.21
+  
+product7:
+  id: 7
+  name: 'Producto 7'
+  brand_id: 1
+  type: 'Tipo 1'
+  description: 'Descripcion producto 7'
+  origin: 'Origen producto 7'
+  price: 1.23
+  weight: 0.54
+
+product8:
+  id: 8
+  name: 'Producto 8'
+  brand_id: 2
+  type: 'Tipo 1'
+  description: 'Descripcion producto 8'
+  origin: 'Origen producto 8'
+  price: 0.5
+  weight: 0.5
+  
+product9:
+  id: 9
+  name: 'Producto 9'
+  brand_id: 1
+  type: 'Tipo 3'
+  description: 'Descripcion producto 9'
+  origin: 'Origen producto 9'
+  price: 4.3
+  weight: 2.22
+ 
+product10:
+  id: 10
+  name: 'Producto 10'
+  brand_id: 2
+  type: 'Tipo 1'
+  description: 'Descripcion producto 10'
+  origin: 'Origen producto 10'
+  price: 5.2
+  weight: 2.4

@@ -1,5 +1,5 @@
 class Supplier < ActiveRecord::Base
-	attr_accessible :name, :street, :city, :province, :phone
+	attr_accessible :name, :street, :city, :province, :phone, :product_ids
 
 	has_and_belongs_to_many :products
 	

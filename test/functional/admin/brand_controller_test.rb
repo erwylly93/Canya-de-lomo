@@ -3,7 +3,7 @@ require 'test_helper'
 class Admin::BrandsControllerTest < ActionController::TestCase
 
   setup do
-    @brand = brands(:one)
+    @brand = brands(:brand1)
     @controller = Admin::BrandController.new
     @request = ActionController::TestRequest.new
     @response = ActionController::TestResponse.new
@@ -21,7 +21,7 @@ class Admin::BrandsControllerTest < ActionController::TestCase
   end
 
   test "should create brand" do
-    assert_difference('Brand.count') do
+    assert_difference 'Brand.count' do
       post :create, :brand => { :name => 'Navidul', 
                               :street => 'Calle Jamona', 
                               :city => 'Ciudad Jamona', 
@@ -46,18 +46,19 @@ class Admin::BrandsControllerTest < ActionController::TestCase
 
   test "should update brand" do
 
-    post :update, :id => 980190962, :brand => { :name => 'Joseph' }
+    post :update, :id => 1, :brand => { :name => 'Nueva marca' }
     assert_response :redirect
-    assert_redirected_to :action => 'show', :id => 980190962
-    assert_equal 'Joseph', Brand.find(980190962).name
+    assert_redirected_to :action => 'show', :id => 1
+    assert_equal 'Nueva marca', Brand.find(1).name
 
   end
 
   test "should destroy brand" do
-    assert_difference('Brand.count', -1) do
+    assert_difference 'Brand.count', -1 do
       delete :destroy, id: @brand
     end
-
-    assert_redirected_to admin_brand_path
+    assert_equal flash[:notice], "La marca Marca 1 ha sido borrada."
+	assert_response :redirect
+    assert_redirected_to :action => 'index'
   end
 end

@@ -1,22 +1,31 @@
 require 'test_helper'
 
 class CatalogControllerTest < ActionController::TestCase
-  test "should get index" do
+  fixtures :suppliers, :brands, :products
+
+  setup do
+    @brand = brands(:brand1)
+    @controller = CatalogController.new
+    @request = ActionController::TestRequest.new
+    @response = ActionController::TestResponse.new
+  end
+
+  test "index" do
     get :index
     assert_response :success
   end
 
-  test "should get show" do
-    get :show
+  test "show" do
+    get :show, :id => @brand
     assert_response :success
   end
 
-  test "should get search" do
+  test "search" do
     get :search
     assert_response :success
   end
 
-  test "should get latest" do
+  test "latest" do
     get :latest
     assert_response :success
   end

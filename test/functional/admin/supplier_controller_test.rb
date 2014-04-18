@@ -3,7 +3,7 @@ require 'test_helper'
 class Admin::SuppliersControllerTest < ActionController::TestCase
 
   setup do
-    @supplier = suppliers(:one)
+    @supplier = suppliers(:supplier1)
     @controller = Admin::SupplierController.new
     @request = ActionController::TestRequest.new
     @response = ActionController::TestResponse.new
@@ -22,13 +22,12 @@ class Admin::SuppliersControllerTest < ActionController::TestCase
 
   test "should create supplier" do
     assert_difference('Supplier.count') do
-      post :create, :supplier => { :name => 'Navidul', 
-                              :street => 'Calle Jamona', 
-                              :city => 'Ciudad Jamona', 
-                              :province => 'Provincia Jamona', 
-                              :phone => '123456789'}
+      post :create, :supplier => { 	:name => 'Navidul', 
+									:street => 'Calle Jamona', 
+									:city => 'Ciudad Jamona', 
+									:province => 'Provincia Jamona', 
+									:phone => '123456789'}
     end
-
     assert_response :redirect
     assert_redirected_to :action => 'index'
 
@@ -46,10 +45,10 @@ class Admin::SuppliersControllerTest < ActionController::TestCase
 
   test "should update supplier" do
 
-    post :update, :id => 980190962, :supplier => { :name => 'Joseph' }
+    post :update, :id => 1, :supplier => { :name => 'Proveedor nuevo' }
     assert_response :redirect
-    assert_redirected_to :action => 'show', :id => 980190962
-    assert_equal 'Joseph', Supplier.find(980190962).name
+    assert_redirected_to :action => 'show', :id => 1
+    assert_equal 'Proveedor nuevo', Supplier.find(1).name
 
   end
 
@@ -57,7 +56,8 @@ class Admin::SuppliersControllerTest < ActionController::TestCase
     assert_difference('Supplier.count', -1) do
       delete :destroy, id: @supplier
     end
-
-    assert_redirected_to admin_supplier_path
+	assert_equal flash[:notice], "El proveedor Proveedor 1 ha sido borrado."
+	assert_response :redirect
+    assert_redirected_to :action => 'index'
   end
 end

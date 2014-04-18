@@ -1,8 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name:   'Casa Tarradellas'
-  street: 'Calle Tarradellas'
-  city:   'Ciudad Tarradellas'
+supplier1:
+  id:	  	1
+  name:   	'Proveedor 1'
+  street: 	'Calle Tarradellas'
+  city:   	'Ciudad Tarradellas'
   province: 'Provincia Tarradellas'
-  phone:  '987654321'
+  phone:  	'987654321'
+  
+supplier2:
+  id:	  	2
+  name:   	'Proveedor 2'
+  street: 	'Calle proveedor 2'
+  city:   	'Ciudad proveedor 2'
+  province: 'Provincia proveedor 2'
+  phone:  	'985736217'

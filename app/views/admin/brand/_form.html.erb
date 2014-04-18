@@ -24,3 +24,7 @@
 
 <p><label for="brand_phone">Teléfono</label><br/>
 <%= text_field 'brand', 'phone' %></p>
+
+<%= collection_select :widget, :province, @provinces, :id, :province, :input_html => {:rel => "/provinces/cities_by_provincies"} %>
+
+<%= collection_select :widget, :city, @cities, :id, :name %>

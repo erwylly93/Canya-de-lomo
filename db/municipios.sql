@@ -10,20 +10,20 @@
 # Twitter: @alombarte
 # ************************************************************
 
-# Dump of table municipios
+# Dump of table citys
 # ------------------------------------------------------------
 
-CREATE TABLE `eshop_development`.`municipios` (
-  `id_municipio` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
-  `id_provincia` smallint(6) NOT NULL,
-  `cod_municipio` int(11) NOT NULL COMMENT 'Código de muncipio DENTRO de la provincia, campo no único',
+CREATE TABLE `eshop_development`.`cities` (
+  `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
+  `id_province` smallint(6) NOT NULL,
+  `cod_city` int(11) NOT NULL COMMENT 'Código de muncipio DENTRO de la provincia, campo no único',
   `DC` int(11) NOT NULL COMMENT 'Digito Control. El INE no revela cómo se calcula, secreto nuclear.',
-  `nombre` varchar(100) NOT NULL DEFAULT '',
-  PRIMARY KEY (`id_municipio`)
+  `name` varchar(100) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-INSERT INTO `eshop_development`.`municipios` (`id_provincia`, `cod_municipio`, `DC`, `nombre`)
+INSERT INTO `eshop_development`.`cities` (`id_province`, `cod_city`, `DC`, `name`)
 VALUES
 	(1,1,4,'Alegría-Dulantzi'),
 	(2,1,9,'Abengibre'),

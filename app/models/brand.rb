@@ -1,7 +1,7 @@
 class Brand < ActiveRecord::Base
-  	attr_accessible :name, :street, :city, :province, :phone
+  attr_accessible :name, :street, :city, :province, :phone
 
-  	has_many :products
+  has_many :products
 
 	validates_presence_of :name
 	validates_length_of :name, :in => 5..255

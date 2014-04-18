@@ -1,10 +1,10 @@
 # ------------------------------------------------------------
-# Listado de provincias españolas 2012.
+# Listado de provinces españolas 2012.
 #
 # Datos extraídos del INE (Instituo Nacional de Estadística).
 #
-# El campo id_provincia debería coincidir con los dos primeros dígitos del código postal
-# de la provincia. Los que tienen un dígito, añadir el 0 delante.
+# El campo id debería coincidir con los dos primeros dígitos del código postal
+# de la province. Los que tienen un dígito, añadir el 0 delante.
 #
 # Ejemplo:
 # Dado un código postal 08031, tomamos los dos primeros dígitos (08) y vemos que pertenence a prov. Barcelona,
@@ -14,12 +14,12 @@
 # Twitter: @alombarte
 # ------------------------------------------------------------
 
-CREATE TABLE `eshop_development`.`provincias` (
-  `id_provincia` smallint(6) DEFAULT NULL,
-  `provincia` varchar(30) DEFAULT NULL
+CREATE TABLE `eshop_development`.`provinces` (
+  `id` smallint(6) DEFAULT NULL,
+  `province` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB;
 
-INSERT INTO `eshop_development`.`provincias` (`id_provincia`, `provincia`)
+INSERT INTO `eshop_development`.`provinces` (`id`, `province`)
 VALUES
 	(2,'Albacete'),
 	(3,'Alicante/Alacant'),

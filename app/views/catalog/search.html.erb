@@ -1,6 +1,6 @@
 <%= render :partial => 'search_box' %>
 
-<% if @products && params[:search] && !params[:search].blank? && !params[:search][:name_contains].blank? %>
+<% if @products %>
 	<p>La búsqueda "<%= params[:search][:name_contains] %>" produjo <%= pluralize @products.size, "resultado" %>:</p>
 	<%= render(:partial => "products") %>
 <% end %>

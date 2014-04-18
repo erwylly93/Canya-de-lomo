@@ -3,7 +3,7 @@ class CatalogController < ApplicationController
   def index
   	@page_title = "Lista de productos"
   	@products = Product.paginate :page => params[:page],
-								 :per_page => 10,
+								 :per_page => 5,
 								 :include => [:brand, :suppliers],
 								 :order => "products.id desc"
   end
@@ -18,12 +18,23 @@ class CatalogController < ApplicationController
   def search
     @page_title = "Buscar producto"
     @search = Product.search(params[:search])
-    @products = @search.all
-    unless @products.size > 0
-      flash.now[:notice] = "La búsqueda no produjo resultados."
+    if params[:search]
+      if !params[:search][:name_contains].blank?
+        @products = @search.all
+        flash.now[:notice] = "La búsqueda no produjo resultados." unless @products.size > 0
+      else
+        flash.now[:notice] = "Introduzca alguna búsqueda." 
+      end
     end
   end
 
   def latest
+    @page_title = "Últimos productos"
+    @products = Product.latest 5
+  end
+
+  def rss
+    latest
+    render :layout => false
   end
 end

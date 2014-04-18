@@ -5,9 +5,9 @@ class Brand < ActiveRecord::Base
 
 	validates_presence_of :name
 	validates_length_of :name, :in => 5..255
-	validates_length_of :street, :in => 10..255
-	validates_length_of :city, :in => 4..255
-	validates_length_of :province, :in => 4..255
+	validates_length_of :street, :in => 10..255, :allow_blank => true
+	validates_length_of :city, :in => 4..255, :allow_blank => true
+	validates_length_of :province, :in => 4..255, :allow_blank => true
 	validates_length_of :phone, :is => 9
 	validates_uniqueness_of :name
 

@@ -13,8 +13,8 @@ Eshop::Application.routes.draw do
   get 'catalog/index'
   get 'catalog/latest'
   get 'catalog/search'
+  get 'catalog/rss'
 
-  
   get 'admin/supplier/new'
   post 'admin/supplier/create'
   get 'admin/supplier/edit'

@@ -9,9 +9,10 @@ class Product < ActiveRecord::Base
 
 	validates_presence_of :name, :brand_id, :price, :weight
 	validates_length_of :name, :in => 2..255
-	validates_length_of :description, :in => 0..5000
-	validates_length_of :origin, :in => 2..255
+	validates_length_of :description, :in => 5..5000, :allow_blank => true
+	validates_length_of :origin, :in => 2..255, :allow_blank => true
 	validates_numericality_of :price, :greater_than_or_equal_to => 0
+	validates_numericality_of :weight, :greater_than => 0
 
 	# En la tabla productos hay una columna que se llama type, y es un tipo reservado. Así se "sobrecarga" 
 	# (si no cambiar nombre de la columna):
@@ -19,6 +20,10 @@ class Product < ActiveRecord::Base
 
 	def supplier_names
     	self.suppliers.map{|supplier| supplier.name}.join(", ")
+  	end
+
+  	def self.latest(num)
+    	find :all, :limit => num, :order => "products.id desc", :include => [:suppliers, :brand]
   	end
 
 	def getname

@@ -1,10 +1,8 @@
 <dl>
 	<dt>Nombre</dt>
 	<dd><%= @supplier.name %></dd>
-	<dt>Ciudad</dt>
-	<dd><%= @supplier.city %></dd>
-	<dt>Calle</dt>
-	<dd><%= @supplier.street %></dd>
+	<dt>Direccion</dt>
+	<dd><%= @supplier.street%>, <%= @supplier.city %> (<%= @supplier.province %>)</dd>
 	<dt>Teléfono</dt>
 	<dd><%= @supplier.phone %></dd>
 </dl>

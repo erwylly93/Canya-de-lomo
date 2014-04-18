@@ -1,10 +1,8 @@
 <dl>
 	<dt>Nombre</dt>
 	<dd><%= @brand.name %></dd>
-	<dt>Ciudad</dt>
-	<dd><%= @brand.city %></dd>
-	<dt>Calle</dt>
-	<dd><%= @brand.street %></dd>
+	<dt>Dirección</dt>
+	<dd><%= @brand.street %>, <%= @brand.city %> (<%= @brand.province %>)</dd>
 	<dt>Teléfono</dt>
 	<dd><%= @brand.phone %></dd>
 </dl>

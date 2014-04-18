@@ -1,43 +1,5 @@
 Eshop::Application.routes.draw do
 
-  get "catalog/index"
-
-  get "catalog/show"
-
-  get "catalog/search"
-
-  get "catalog/latest"
-
-  # get "product/admin/product"
-
-  # get "product/new"
-
-  # get "product/create"
-
-  # get "product/edit"
-
-  # get "product/update"
-
-  # get "product/destroy"
-
-  # get "product/show"
-
-  # get "product/index"
-
-  # get "brand/new"
-
-  # get "brand/create"
-
-  # get "brand/edit"
-
-  # get "brand/update"
-
-  # get "brand/destroy"
-
-  # get "brand/show"
-
-  # get "brand/index"
-
   root to: 'about#index'
 
   match 'catalog' => 'catalog#index'
@@ -50,6 +12,7 @@ Eshop::Application.routes.draw do
   match 'catalog/show/:id' => 'catalog#show'
   get 'catalog/index'
   get 'catalog/latest'
+  get 'catalog/search'
 
   
   get 'admin/supplier/new'

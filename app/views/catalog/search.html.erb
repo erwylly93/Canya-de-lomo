@@ -1,2 +1,8 @@
-<h1>Catalog#search</h1>
-<p>Find me in app/views/catalog/search.html.erb</p>
+<%= render :partial => 'search_box' %>
+
+<% if @products.size > 0 %>
+	<p>La búsqueda "<%= params[:q] %>" produjo <%= pluralize @products.size, "resultado" %>:</p>
+	<%= render(:partial => "products") %>
+<% end %>
+
+<p><%= link_to 'Volver al catálogo', :action => 'index' %></p>

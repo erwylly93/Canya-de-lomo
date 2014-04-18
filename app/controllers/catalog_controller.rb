@@ -1,3 +1,4 @@
+#encoding: utf-8
 class CatalogController < ApplicationController
   def index
   	@page_title = "Lista de productos"
@@ -12,16 +13,18 @@ class CatalogController < ApplicationController
       return render(:text => "Producto no encontrado", :status => 404)
     end 
     @page_title = @product.name
-
-    #@product = Product.find(params[:id]) rescue nil
-    #  return render(:text => "Producto no encontrado", :status => 404)
-    #unless @product
-    #  @page_title = @product.name
-    # end
-  
   end
 
   def search
+    @page_title = "Buscar producto"
+    if params[:q] && params[:q] != ""
+      @products = Product.where("name LIKE ?", "%#{params[:q]}%")
+      unless @products.size > 0
+        flash.now[:notice] = "La búsqueda no produjo resultados."
+      end
+    else
+      @products = []
+    end
   end
 
   def latest

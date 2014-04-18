@@ -1,0 +1,4 @@
+<p><%= link_to 'Últimos productos', :action => 'latest' %></p>
+<%= render :partial => 'products' %>
+<%= will_paginate @products, :page_links => false, :link_separator => ' | ',
+                          :previous_label => 'Anterior', :next_label => 'Siguiente' %>

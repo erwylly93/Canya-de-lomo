@@ -17,13 +17,10 @@ class CatalogController < ApplicationController
 
   def search
     @page_title = "Buscar producto"
-    if params[:q] && params[:q] != ""
-      @products = Product.where("name LIKE ?", "%#{params[:q]}%")
-      unless @products.size > 0
-        flash.now[:notice] = "La búsqueda no produjo resultados."
-      end
-    else
-      @products = []
+    @search = Product.search(params[:search])
+    @products = @search.all
+    unless @products.size > 0
+      flash.now[:notice] = "La búsqueda no produjo resultados."
     end
   end
 

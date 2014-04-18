@@ -1,4 +1,5 @@
-<%= form_tag "/catalog/search", :method => "get" do %>
-  <%= text_field_tag :q %> 
-  <%= submit_tag 'Buscar' %>
+<%= form_for @search, :url => "/catalog/search", :html => {:method => :get} do |f| %>
+  <%= f.label :Nombre %>	
+  <%= f.text_field :name_contains %>
+  <%= f.submit 'Buscar' %>
 <% end %>

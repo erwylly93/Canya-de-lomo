@@ -1,7 +1,7 @@
 #encoding: utf-8
 class CatalogController < ApplicationController
   def index
-  	@page_title = "Lista de productos"
+  	@page_title = "Catálogo de productos"
   	@products = Product.paginate :page => params[:page],
 								 :per_page => 5,
 								 :include => [:brand, :suppliers],

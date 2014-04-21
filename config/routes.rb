@@ -1,6 +1,6 @@
 Eshop::Application.routes.draw do
 
-  root to: 'about#index'
+  root to: 'catalog#index'
 
   match 'catalog' => 'catalog#index'
   match 'about' => 'about#index'

@@ -14,4 +14,6 @@ Brand.create(name: 'Noel', street: 'Pavo 5', city: 'Córdoba', province: 'Córdo
 Supplier.create(name: 'Repartidores chacinas', street: 'Andalucía 23', city: 'Cádiz', province: 'Cádiz', phone: 956773091)
 Supplier.create(name: 'Ibéricos para todos', street: 'Boquerón 20', city: 'Ciudad Real', province: 'Ciudad Real', phone: 931209898)
 Supplier.create(name: 'Ibéricos para ti', street: 'Anchoa feliz 2', city: 'Casteldellfels', province: 'Barcelona', phone: 911324300)
-Product.create(name: 'Caña suprema', brand_id: 1, type: 'Caña de lomo', description: 'Caña de lomo de calidad suprema', origin: 'Extremadura', price: 10.38, weight: 0.2)
+Product.create(name: 'Caña suprema', type: 'Caña de lomo', description: 'Caña de lomo de calidad suprema', origin: 'Extremadura', price: 10.38, weight: 0.2)
+Product.create(name: 'Jamón pata negra', type: 'Jamón', description: 'Jamón de pata negra de la Sierra de Huelva', origin: 'Sierra de Huelva', price: 190.30, weight: 7.3)
+Product.create(name: 'Salchichón jienense', type: 'Salchichón', description: 'Salchichón elaborado de la forma tradicional', origin: 'Jaén', price: 5.40, weight: 0.150)

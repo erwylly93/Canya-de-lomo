@@ -3,7 +3,7 @@ class CatalogController < ApplicationController
   def index
   	@page_title = "Catálogo de productos"
   	@products = Product.paginate :page => params[:page],
-								 :per_page => 5,
+								 :per_page => 10,
 								 :include => [:brand, :suppliers],
 								 :order => "products.id desc"
   end
@@ -30,7 +30,7 @@ class CatalogController < ApplicationController
 
   def latest
     @page_title = "Últimos productos"
-    @products = Product.latest 5
+    @products = Product.latest 10
   end
 
   def rss

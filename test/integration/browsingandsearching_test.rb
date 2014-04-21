@@ -9,7 +9,7 @@ class BrowsingAndSearchingTest < ActionDispatch::IntegrationTest
 		jill.go_to_second_page
 		jill.searches_for_tolstoy
 		jill.views_latest_products
-		jill.reads_rss
+		#jill.reads_rss
 
 	end
 	
@@ -30,7 +30,7 @@ class BrowsingAndSearchingTest < ActionDispatch::IntegrationTest
 			# There are 10 products at dl id=products 
 			assert_tag :tag => "dl", :attributes => { :id => "products" },
 								 :children => { :count => 10, :only => {:tag => "dt"}}
-			assert_tag :tag => "dt", :content => "Producto 1"
+			assert_tag :tag => "dt", :content => "Producto 20"
 			check_product_links
 		end
 		
@@ -38,7 +38,7 @@ class BrowsingAndSearchingTest < ActionDispatch::IntegrationTest
 			get "/catalog?page=2"
 			assert_response :success
 			assert_template "catalog/index"
-			assert_equal Product.find_by_name("Producto 1"), assigns(:products)#Product.all
+			assert_equal Product.find_by_name("Producto 1"), assigns(:products).last
 			check_product_links
 		end
 		
@@ -47,19 +47,20 @@ class BrowsingAndSearchingTest < ActionDispatch::IntegrationTest
 			get "/catalog/show/#{@product.id}"
 			assert_response :success
 			assert_template "catalog/show"
-			assert_tag :tag => "h1",
-			:content => @product.name
+			assert_tag :tag => "h1", :content => @product.name
+			# Iterar proveedores
+			assert_tag :tag => "dd", :content => "#{@product.suppliers.map{|a| a.name}.join(", ")}"
 		end
 		
 		def searches_for_tolstoy
-			proveedor = Supplier.find_by_name("Proveedor 1")
-			get "/catalog/search?q=#{url_encode("Proveedor 1")}"
+			# Test para un buscador por productos en vez de proveedores
+			product = Product.find_by_name("Producto 15")
+			get "/catalog/search?search[name_contains]=#{url_encode("Producto 15")}"
 			assert_response :success
 			assert_template "catalog/search"
-			assert_tag :tag => "dl", :attributes => { :id => "products" }, :children => { :count => proveedor.products.size, :only => {:tag => "dt"}}
-			proveedor.products.each do |product|
-				assert_tag :tag => "dt", :content => product.name
-			end
+			# Comprobar que devuelve un producto desde los fixtures: Producto 15 existe
+			assert_tag :tag => "dl", :attributes => { :id => "products" }, :children => { :count => 1, :only => {:tag => "dt"} }
+			assert_tag :tag => "a", :attributes => { :href => "/catalog/show/#{product.id}"}
 		end
   
 		def views_latest_products

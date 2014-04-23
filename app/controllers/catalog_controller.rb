@@ -1,5 +1,7 @@
 #encoding: utf-8
 class CatalogController < ApplicationController
+  before_filter :initialize_cart
+  
   def index
   	@page_title = "Catálogo de productos"
   	@products = Product.paginate :page => params[:page],

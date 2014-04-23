@@ -42,4 +42,11 @@ Eshop::Application.routes.draw do
   match 'admin/product/show/:id' => 'admin/product#show'
   get 'admin/product/index'
 
+  get 'cart/add'
+  post 'cart/add'
+  get 'cart/remove'
+  post 'cart/remove'
+  get 'cart/clear'
+  post 'cart/clear'
+
 end

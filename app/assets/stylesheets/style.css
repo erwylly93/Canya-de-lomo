@@ -23,6 +23,10 @@ dt {
   font-weight: bold;
 }
 
+td {
+  padding: 10px;
+}
+
 .field_with_errors {
   padding: 1px;
   border-radius: 5px;

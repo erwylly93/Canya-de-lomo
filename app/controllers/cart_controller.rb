@@ -6,9 +6,15 @@ class CartController < ApplicationController
     @product = Product.find(params[:id])
     @page_title = 'Añadir ítem'
     if request.post?
-      @item = @cart.add(params[:id])
-      flash[:cart_notice] = "<em>#{@item.product.name}</em> añadido.".html_safe
-      redirect_to :controller => 'catalog'
+      if params[:amount].to_i > 0
+        @item = @cart.add(params[:id], params[:amount].to_i)
+        flash[:cart_notice] = "#{params[:amount] if params[:amount].to_i > 1} <em>#{@item.product.name}</em> 
+                               #{params[:amount].to_i > 1 ? "añadidos" : "añadido"}.".html_safe
+        redirect_to :controller => 'catalog'
+      else
+        flash[:add_cart_notice] = "¡Cantidad incorrecta!"
+        render :controller => 'cart', :action => 'add', :template => 'cart/add'
+      end
     else
       render :controller => 'cart', :action => 'add', :template => 'cart/add'
     end

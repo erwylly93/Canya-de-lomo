@@ -1,9 +1,19 @@
 <strong>¿Deseas añadir <em><%= @product.name %></em> a tu carrito de la compra?</strong>
 <br><br>
+<% if flash[:add_cart_notice] %>
+  <p id='notice'><%= flash[:add_cart_notice] %></p>
+<% end %>
+<%= form_tag 'add' do %>
+	<div class="field">
+		<p><label for="item_amount">Cantidad</label><br/>
+		<%= text_field_tag 'amount', '1' %></p>
+	</div>
+	<%= hidden_field_tag 'id', params[:id]  %>
+	<div style="float: left; width: auto;">
+		<%= submit_tag 'Confirmar', :id => params[:id] %>
+	</div>
+<% end %>
 <div style="float: left; width: auto;">
 	<%= button_to 'Cancelar', :controller => 'catalog', :action => 'index' %>
 </div>
-<div style="float: left; width: auto;">
-	<%= button_to 'Confirmar', :action => 'add', :id => params[:id] %>
-</div>
-<br>
+<div style="clear:both"></div>

@@ -1,4 +1,6 @@
 class Cart < ActiveRecord::Base
+  attr_accessible :cart_items
+
   has_many :cart_items
   has_many :products, :through => :cart_items
 
@@ -18,10 +20,10 @@ class Cart < ActiveRecord::Base
     ci
   end
 
-  def remove(product_id)
-    ci = cart_items.find_by_product_id(product_id) 
-    if ci.amount > 1
-      ci.update_attribute(:amount, ci.amount - 1)
+  def remove(product_id, amount)
+    ci = cart_items.find_by_product_id(product_id)
+    if ci.amount - amount > 0
+      ci.update_attribute(:amount, ci.amount - amount)
     else
       CartItem.destroy(ci.id)
     end

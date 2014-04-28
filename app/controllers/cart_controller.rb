@@ -24,9 +24,15 @@ class CartController < ApplicationController
     @product = Product.find(params[:id])
     @page_title = 'Eliminar ítem'
     if request.post?
-      @item = @cart.remove(params[:id])
-      flash[:cart_notice] = "Eliminado 1 <em>#{@item.product.name}</em>.".html_safe
-      redirect_to :controller => 'catalog'
+      if @cart.cart_items.find_by_product_id(params[:id].to_i).amount - params[:amount].to_i >= 0
+        @item = @cart.remove(params[:id], params[:amount].to_i)
+        flash[:cart_notice] = "#{params[:amount] if params[:amount].to_i > 1} <em>#{@item.product.name}</em> 
+                               #{params[:amount].to_i > 1 ? "eliminados" : "eliminado"}.".html_safe
+        redirect_to :controller => 'catalog'
+      else
+        flash[:remove_cart_notice] = "¡Cantidad incorrecta!"
+        render :controller => 'cart', :action => 'remove', :template => 'cart/remove'
+      end
     else
       render :controller => 'cart', :action => 'remove', :template => 'cart/remove'
     end

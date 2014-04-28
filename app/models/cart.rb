@@ -8,7 +8,7 @@ class Cart < ActiveRecord::Base
   	cart_items.inject(0) { |sum, item| item.price * item.amount + sum }
   end
 
-  def add(product_id, amount)
+  def add(product_id, amount = 1)
     items = cart_items.find_all_by_product_id(product_id)
     product = Product.find(product_id)
     if items.size < 1
@@ -20,7 +20,7 @@ class Cart < ActiveRecord::Base
     ci
   end
 
-  def remove(product_id, amount)
+  def remove(product_id, amount = 1)
     ci = cart_items.find_by_product_id(product_id)
     if ci.amount - amount > 0
       ci.update_attribute(:amount, ci.amount - amount)

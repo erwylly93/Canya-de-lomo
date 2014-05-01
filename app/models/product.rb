@@ -8,7 +8,7 @@ class Product < ActiveRecord::Base
 	has_many :cart_items
 	has_many :carts, :through => :cart_items
 
-	has_attached_file :cover_image
+	has_attached_file :cover_image, :styles => { :resize => "300x300>" }
 
 	validates_presence_of :name, :brand_id, :price, :weight
 	validates_length_of :name, :in => 2..255

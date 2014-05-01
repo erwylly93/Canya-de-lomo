@@ -51,11 +51,11 @@
 </div>
 
 <div class="field">
+  <p><label for="product_cover_image">Imagen</label><br/>
   <% if @product.cover_image.exists? then %>
-    <dd><%= image_tag @product.cover_image.url %></dd>
+    <dd><%= image_tag @product.cover_image.url(:resize) %></dd>
   <% else %>
     <p>No se encontró ninguna imagen. Por favor, suba una.</p>
   <% end %>
-  <p><label for="product_cover_image">Cover image</label><br/>
   <%= file_field 'product', :cover_image %></p>
 </div>

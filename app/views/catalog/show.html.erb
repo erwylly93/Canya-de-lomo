@@ -1,5 +1,5 @@
 <% if @product.cover_image.exists? then %>
-    <dd><%= image_tag @product.cover_image.url %></dd>
+    <dd><%= image_tag @product.cover_image.url(:resize) %></dd>
   <% else %>
     <dd><%= image_tag '/missing.png' %></dd>
     <p>No hay una imagen disponible.</p>

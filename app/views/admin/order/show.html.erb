@@ -52,4 +52,4 @@
 </dl>
 
 <%= button_to 'Cerrar pedido', {:action => 'close', :id => @order},
-              :confirm => "¿Deseas cerrar el pedido ##{@order.id}?" %>
+              :confirm => "¿Deseas cerrar el pedido ##{@order.id}?"  if @order.processed? %>

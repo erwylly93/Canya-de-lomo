@@ -27,17 +27,36 @@ td {
   padding: 10px;
 }
 
-.field_with_errors {
+/* Quitado */
+
+/*.field_with_errors {
   padding: 1px;
   border-radius: 5px;
   background-color: #D9534F;
   display: table;
+}*/
+
+/* --- */
+
+/* Añadido */
+
+.field_with_errors label {
+  padding: 2px;
+  background-color: red;
 }
+
+.field_with_errors input[type="text"] {
+  padding: 3px 2px;
+  border: 2px solid rgba(220,30,0,0.6);
+  border-radius: 5px;
+}
+
+/* --- */
 
 #errorExplanation {
   width: 400px;
-  border: 2px solid #D9534F;
-  border-radius: 5px;
+  border: 2px solid rgba(220,30,0,0.8);
+  /*border-radius: 5px;*/
   padding: 7px;
   padding-bottom: 12px;
   margin-bottom: 20px;
@@ -50,7 +69,7 @@ td {
   padding: 5px 5px 5px 15px;
   font-size: 12px;
   margin: -7px;
-  background-color: #D9534F;
+  background-color: rgba(220,30,0,0.8);
   color: #fff;
 }
 

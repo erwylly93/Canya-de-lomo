@@ -54,4 +54,10 @@ Eshop::Application.routes.draw do
   post 'checkout/submit_order'
   get 'checkout/thank_you'
 
+  match 'admin/order' => 'admin/order#index'
+  post 'admin/order/close'
+  get 'admin/order/show'
+  match 'admin/order/show/:id' => 'admin/order#show'
+  get 'admin/order/index'
+
 end

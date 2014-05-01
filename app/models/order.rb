@@ -121,4 +121,5 @@ class Order < ActiveRecord::Base
     self.status = 'closed'
     save!
   end
+  
 end

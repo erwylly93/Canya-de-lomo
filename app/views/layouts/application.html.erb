@@ -4,7 +4,7 @@
 <head>
   <title><%= @page_title || 'Caña de Lomo' %></title>
   <%= stylesheet_link_tag "style" %>
-  <% if @cart || (@page_title && (@page_title.include?('Lista') || @page_title.include?('Detalles'))) %>
+  <% if @cart || (@page_title && (@page_title.include?('Lista') || @page_title.include?('Detalles'))) || controller_name == 'order' %>
     <%= javascript_include_tag "application" %>
   <% end %>
 </head>

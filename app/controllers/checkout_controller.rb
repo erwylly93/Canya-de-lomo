@@ -28,7 +28,7 @@ class CheckoutController < ApplicationController
         @cart.cart_items.destroy_all
         redirect_to :action => 'thank_you'
       else
-        flash[:notice] = "Hubo un error al completar el pedido. '#{@order.error_messag}'"
+        flash[:notice] = "Hubo un error al completar el pedido. \"#{@order.error_message}'\""
         render :action => 'index'
       end
     else

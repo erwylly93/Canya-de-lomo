@@ -14,7 +14,10 @@
   </div>
 <% end %>
 
+<p><%= link_to 'Volver al catálogo', :controller => 'catalog' %></p>
+
 <p><em>Tu pedido se muestra en el carrito de la compra a la derecha.</em></p>
+
 <form method="post" id="checkout" action="<%= url_for :action => :submit_order %>">
   <fieldset>
     <legend>Información de contacto</legend>

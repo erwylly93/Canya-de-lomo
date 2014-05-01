@@ -38,6 +38,10 @@ gem "jquery-ui-rails"
 # Para la lista de países. Sprint del checkout
 gem 'countries', '0.9.2', :require => 'iso3166'
 
+# Para las pasarelas de pago. Sprint del checkout
+gem 'activemerchant', '1.31.1'
+gem 'eu_central_bank', '0.3.5' # cambio de divisa
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -31,14 +31,94 @@ class Order < ActiveRecord::Base
   validates_length_of :card_verification_value, :in => 3..4, :on => :create
 
   def total
-  	order_items.inject(0) { |sum, n| n.price * n.amout + sum }
+  	order_items.inject(0) { |sum, n| n.price * n.amount + sum }
   end
 
   def process
-    result = true
-    # por hacer. cargar al cliente llamando a la pasarela de pago
-    self.status = 'processed'
+    begin
+      raise 'Un pedido cerrado no se puede procesar de nuevo' if self.closed?
+      active_merchant_payment
+    rescue => e
+      logger.error("El pedido #{id} ha fallado debido a una excepción: #{e}.")
+      self.error_message = "Excepción: #{e}"
+      self.status = 'failed'
+    end
     save!
-    result
+    self.processed?
+  end
+
+  def active_merchant_payment
+    ActiveMerchant::Billing::Base.mode = :test
+    ActiveMerchant::Billing::AuthorizeNetGateway.default_currency = 'USD'
+    ActiveMerchant::Billing::AuthorizeNetGateway.wiredump_device = STDERR   
+    ActiveMerchant::Billing::AuthorizeNetGateway.wiredump_device.sync = true
+    self.status = 'failed'
+
+    creditcard = ActiveMerchant::Billing::CreditCard.new(
+      :brand              => card_type,
+      :number             => card_number,
+      :month              => card_expiration_month,
+      :year               => card_expiration_year,
+      :verification_value => card_verification_value,
+      :first_name         => ship_to_first_name,
+      :last_name          => ship_to_last_name
+    )
+
+    if creditcard.valid?
+      gateway = ActiveMerchant::Billing::AuthorizeNetGateway.new(
+        :login     => '8jHK88bQ',
+        :password  => '98yw4Rk4T7nZ2K7B'
+      )
+
+      shipping_address = {
+        :first_name => ship_to_first_name,
+        :last_name  => ship_to_last_name,
+        :address1   => ship_to_address,
+        :city       => ship_to_city,
+        :zip        => ship_to_postal_code,
+        :country    => ship_to_country_code,
+        :phone      => phone_number
+      }
+
+      details = {
+        :description      => 'Compra Caña de Lomo',
+        :order_id         => self.id,
+        :email            => email,
+        :ip               => customer_ip,
+        :billing_address  => shipping_address,
+        :shipping_address => shipping_address
+      }
+
+      eucentralbank = EuCentralBank.new
+      eucentralbank.update_rates
+
+      amount = eucentralbank.exchange((self.total * 100).to_i, 'EUR', 'USD').cents
+      response = gateway.purchase(amount, creditcard, details)
+
+      if response.success?
+        self.status = 'processed'
+      else
+        self.error_message = response.message
+      end
+    else
+      self.error_message = 'Tarjeta de crédito inválida'
+    end
+  end
+
+  def processed?
+    self.status == 'processed'
+  end
+
+  def failed?
+    self.status == 'failed'
+  end
+
+  def closed?
+    self.status == 'closed'
+  end
+
+  def close
+    self.status = 'closed'
+    save!
   end
 end

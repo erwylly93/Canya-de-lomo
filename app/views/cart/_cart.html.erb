@@ -2,8 +2,12 @@
   <%= render :partial => 'cart/cart_notice' %>
 <% end %>
 
-<h3>Tu carrito de la compra</h3>
-<p>
+
+<h3 style="text-align:center">
+  <span style="display:block;"><%= image_tag '/shopping_cart.png' %></span>
+  Tu carrito de la compra
+</h3>
+<p style="text-align:center">
   <strong>
     <% unless controller.controller_name == 'checkout' %>
       <%= link_to 'Proceder al checkout', :controller => 'checkout' %>

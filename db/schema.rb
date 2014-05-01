@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140423164712) do
+ActiveRecord::Schema.define(:version => 20140501115627) do
 
   create_table "brands", :force => true do |t|
     t.string   "name",                    :null => false
@@ -35,6 +35,38 @@ ActiveRecord::Schema.define(:version => 20140423164712) do
   create_table "carts", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "cities", :force => true do |t|
+    t.integer "id_province", :limit => 2,                   :null => false
+    t.integer "cod_city",                                   :null => false
+    t.integer "DC",                                         :null => false
+    t.string  "name",        :limit => 100, :default => "", :null => false
+  end
+
+  create_table "order_items", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "order_id"
+    t.float    "price"
+    t.integer  "amount"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "orders", :force => true do |t|
+    t.string   "email"
+    t.string   "phone_number"
+    t.string   "ship_to_first_name"
+    t.string   "ship_to_last_name"
+    t.string   "ship_to_address"
+    t.string   "ship_to_city"
+    t.string   "ship_to_postal_code"
+    t.string   "ship_to_country_code"
+    t.string   "customer_ip"
+    t.string   "status"
+    t.string   "error_message"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
   create_table "products", :force => true do |t|
@@ -62,6 +94,11 @@ ActiveRecord::Schema.define(:version => 20140423164712) do
 
   add_index "products_suppliers", ["product_id"], :name => "fk_products_suppliers_products"
   add_index "products_suppliers", ["supplier_id"], :name => "fk_products_suppliers_suppliers"
+
+  create_table "provinces", :id => false, :force => true do |t|
+    t.integer "id",       :limit => 2
+    t.string  "province", :limit => 30
+  end
 
   create_table "suppliers", :force => true do |t|
     t.string   "name",                    :null => false

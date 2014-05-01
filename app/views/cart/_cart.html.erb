@@ -6,7 +6,7 @@
 <p>
   <strong>
     <% unless controller.controller_name == 'checkout' %>
-      <%= link_to 'Proceder al checkout', :controller => 'checkout' unless !@checkout %>
+      <%= link_to 'Proceder al checkout', :controller => 'checkout' %>
     <% end %>
   </strong>
 </p>

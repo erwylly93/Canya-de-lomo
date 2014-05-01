@@ -49,4 +49,9 @@ Eshop::Application.routes.draw do
   get 'cart/clear'
   post 'cart/clear'
 
+  match 'checkout' => 'checkout#index'
+  get 'checkout/index'
+  post 'checkout/submit_order'
+  get 'checkout/thank_you'
+
 end

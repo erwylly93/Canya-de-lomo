@@ -37,13 +37,6 @@ ActiveRecord::Schema.define(:version => 20140501115627) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "cities", :force => true do |t|
-    t.integer "id_province", :limit => 2,                   :null => false
-    t.integer "cod_city",                                   :null => false
-    t.integer "DC",                                         :null => false
-    t.string  "name",        :limit => 100, :default => "", :null => false
-  end
-
   create_table "order_items", :force => true do |t|
     t.integer  "product_id"
     t.integer  "order_id"
@@ -94,11 +87,6 @@ ActiveRecord::Schema.define(:version => 20140501115627) do
 
   add_index "products_suppliers", ["product_id"], :name => "fk_products_suppliers_products"
   add_index "products_suppliers", ["supplier_id"], :name => "fk_products_suppliers_suppliers"
-
-  create_table "provinces", :id => false, :force => true do |t|
-    t.integer "id",       :limit => 2
-    t.string  "province", :limit => 30
-  end
 
   create_table "suppliers", :force => true do |t|
     t.string   "name",                    :null => false

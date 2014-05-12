@@ -7,13 +7,14 @@ class Admin::OrderControllerTest < ActionController::TestCase
   end
 
   test "should get show" do
-    get :show
+    get :show, :id => 1
     assert_response :success
   end
 
   test "should get close" do
-    get :close
-    assert_response :success
+    get :close, :id => 1
+    assert_response :redirect
+    assert_redirected_to :action => 'index'
   end
 
 end

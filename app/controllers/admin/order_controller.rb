@@ -1,8 +1,8 @@
-class Admin::OrderController < ApplicationController
+class Admin::OrderController < Admin::AuthenticatedController
   def index
   	@status = params[:id]
     if @status.blank?
-      @status = 'all'
+      @status = ''
       conditions = nil
       @page_title = "Lista de todos los pedidos"
     else

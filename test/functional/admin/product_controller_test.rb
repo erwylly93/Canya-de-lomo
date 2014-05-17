@@ -1,4 +1,8 @@
 require 'test_helper'
+require 'admin/product_controller'
+
+# Re-raise errors caught by the controller.   
+class Admin::BookController; def rescue_action(e) raise e end; end  
 
 class Admin::ProductsControllerTest < ActionController::TestCase
   setup do

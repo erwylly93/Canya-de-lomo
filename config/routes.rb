@@ -60,4 +60,19 @@ Eshop::Application.routes.draw do
   match 'admin/order/show/:id' => 'admin/order#show'
   get 'admin/order/index'
 
+  get 'user_session/new'
+  post 'user_session/create'
+  get 'user_session/destroy'
+  get 'user_session/forgot_password'
+  post 'user_session/forgot_password'
+  get 'user_session/reset_password'
+  post 'user_session/reset_password'
+
+  get 'user/new'
+  post 'user/create'
+  get 'user/show'
+  match 'user/show/:id' => 'user#show'
+  get 'user/edit'
+  post 'user/update'
+
 end

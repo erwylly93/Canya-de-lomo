@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'admin/brand_controller'
 
 class Admin::BrandsControllerTest < ActionController::TestCase
 

@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'admin/supplier_controller'
 
 class Admin::SuppliersControllerTest < ActionController::TestCase
 

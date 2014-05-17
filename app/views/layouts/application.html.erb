@@ -12,7 +12,25 @@
    <div id="header">
     <h1 id="logo">Caña de Lomo&trade;</h1>
     <h2 id="slogan">Productos ibéricos</h2>
-    <!-- <p id="loginlogout"> de layout de miniemporium omitido porque da error -->
+    <% if params[:controller] != 'catalog' %>
+    <p id="loginlogout">
+      <% if current_user %>
+        <strong><%= link_to current_user.login, :controller => '/user', :action => :show %></strong>
+        <br/>
+        <%= link_to "Editar cuenta", :controller => '/user', :action => :edit %>
+        <br/>
+        <%= link_to "Cerrar sesión", :controller => '/user_session', :action => :destroy %>
+      <% else %>
+        <% if User.count == 0 %>
+          <strong><%= link_to "Nueva cuenta", :controller => '/user', :action => :new %></strong>
+        <% else %>
+          <strong><%= link_to "Iniciar sesión", :controller => '/user_session', :action => :new %></strong>
+          <br/>
+          <small><%= link_to "¿Olvidaste tu contraseña?", :controller => '/user_session', :action => :forgot_password %></small>
+        <% end %>
+      <% end %>
+    </p>
+    <% end %>
   </div>
   <div id="menu">
     <ul>
@@ -35,6 +53,9 @@
 
   <% if @cart %>
     <div id="shopping_cart"><%= render :partial => 'cart/cart' %></div>
+    <script type="text/javascript">
+      $('#loginlogout').css('background-color', '#def');
+    </script>
   <% end %>
 
   <div id="footer">

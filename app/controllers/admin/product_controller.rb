@@ -1,4 +1,4 @@
-class Admin::ProductController < ApplicationController
+class Admin::ProductController < Admin::AuthenticatedController
   def new
     load_data
     @product = Product.new

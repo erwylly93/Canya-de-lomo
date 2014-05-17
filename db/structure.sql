@@ -19,14 +19,14 @@ CREATE TABLE `cart_items` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `carts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `order_items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -105,6 +105,28 @@ CREATE TABLE `suppliers` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `login` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `crypted_password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password_salt` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `persistence_token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `perishable_token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `login_count` int(11) NOT NULL DEFAULT '0',
+  `failed_login_count` int(11) NOT NULL DEFAULT '0',
+  `last_request_at` datetime DEFAULT NULL,
+  `current_login_at` datetime DEFAULT NULL,
+  `last_login_at` datetime DEFAULT NULL,
+  `current_login_ip` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `last_login_ip` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `pw_reset_code` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 INSERT INTO schema_migrations (version) VALUES ('20140331181214');
 
 INSERT INTO schema_migrations (version) VALUES ('20140407170846');
@@ -120,3 +142,7 @@ INSERT INTO schema_migrations (version) VALUES ('20140423164712');
 INSERT INTO schema_migrations (version) VALUES ('20140501115347');
 
 INSERT INTO schema_migrations (version) VALUES ('20140501115627');
+
+INSERT INTO schema_migrations (version) VALUES ('20140504131258');
+
+INSERT INTO schema_migrations (version) VALUES ('20140504154657');

@@ -16,7 +16,7 @@ pre {
 }
 
 a { color: #000; }
-a:visited { color: #666; }
+/*a:visited { color: #666; }*/
 a:hover { color: #fff; background-color:#000; }
 
 dt {
@@ -166,7 +166,7 @@ td {
 }
 
 #shopping_cart h3 {
-  padding-top: 4em;
+  padding-top: 6em;
 }
 
 #cart_notice {
@@ -182,12 +182,26 @@ td {
 }
 
 #loginlogout {
-  background-color: #4F0;
-  padding: 8px;
-  width: 155px;
+  background-color: #FFDACF;
+  padding: 15px;
+  width: 145px;
   position: absolute;
   top: 0px;
-  right: 10px;
+  right: 20px;
+  z-index: 1;
+}
+
+#loginlogout a {
+  text-decoration: none;
+}
+
+#loginlogout a:visited {
+  color: black;
+}
+
+#loginlogout a:hover {
+  background-color: rgba(0,0,0,0);
+  text-decoration: underline !important;
 }
 
 #checkout fieldset {

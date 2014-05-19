@@ -1,0 +1,11 @@
+<dl>
+	<dt>Nombre</dt>
+	<dd><%= @supplier.name %></dd>
+	<dt>Direccion</dt>
+	<dd><%= @supplier.street%>, <%= @supplier.city %> (<%= @supplier.province %>)</dd>
+	<dt>Teléfono</dt>
+	<dd><%= @supplier.phone %></dd>
+</dl>
+
+<p><%= link_to 'Editar', :action => 'edit', :id => @supplier %> | 
+	<%= link_to 'Atrás', :action => 'index' %></p>

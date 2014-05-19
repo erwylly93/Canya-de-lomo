@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+  <title><%= @page_title || 'Caña de Lomo' %></title>
+  <%= stylesheet_link_tag "style" %>
+  <% if @cart || (@page_title && (@page_title.include?('Lista') || @page_title.include?('Detalles'))) || controller_name == 'order' %>
+    <%= javascript_include_tag "application" %>
+  <% end %>
+</head>
+<body>
+   <div id="header">
+    <h1 id="logo">Caña de Lomo&trade;</h1>
+    <h2 id="slogan">Productos ibéricos</h2>
+    <% if !@cart %>
+      <p id="loginlogout">
+        <% if current_user %>
+          <strong><%= link_to current_user.login, :controller => '/user', :action => :show %></strong>
+          <br/>
+          <%= link_to "Editar cuenta", :controller => '/user', :action => :edit %>
+          <br/>
+          <%= link_to "Cerrar sesión", :controller => '/user_session', :action => :destroy %>
+        <% else %>
+          <% if User.count == 0 %>
+            <strong><%= link_to "Nueva cuenta", :controller => '/user', :action => :new %></strong>
+          <% else %>
+            <strong><%= link_to "Iniciar sesión", :controller => '/user_session', :action => :new %></strong>
+            <br/>
+            <small><%= link_to "¿Olvidaste tu contraseña?", :controller => '/user_session', :action => :forgot_password %></small>
+          <% end %>
+        <% end %>
+      </p>
+    <% end %>
+  </div>
+  <div id="menu">
+    <ul>
+      <li><a href="/admin/brand">Marcas</a>&nbsp;|&nbsp;</li>
+      <li><a href="/admin/supplier">Proveedores</a>&nbsp;|&nbsp;</li>
+      <li><a href="/admin/product">Productos</a>&nbsp;|&nbsp;</li>
+      <li><a href="/admin/order">Pedidos</a>&nbsp;|&nbsp;</li>
+      <li><a href="/catalog">Catálogo</a>&nbsp;|&nbsp;</li>
+      <li><a href="/about">Sobre nosotros</a>&nbsp;</li>
+    </ul>
+  </div>
+
+  <div id="content">
+    <h1><%= @page_title if @page_title %></h1>
+    <% if flash[:notice] %>
+      <div id="notice"><%= flash[:notice] %></div>
+    <% end %>
+    <%= yield %>
+  </div>
+
+  <% if @cart %>
+    <div id="shopping_cart"><%= render :partial => 'cart/cart' %></div>
+    <script type="text/javascript">
+      $('#loginlogout').css('background-color', '#def');
+    </script>
+  <% end %>
+
+  <div id="footer">
+    &copy; 2014 Caña de Lomo
+  </div>  
+</body>
+</html>

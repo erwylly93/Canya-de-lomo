@@ -1,0 +1,132 @@
+# Logfile created on 2014-04-18 14:58:56 +0200 by logger.rb/31641
+Will use local index.
+Will use local index.
+using index in ./index/development/product
+[product] rebuild index with models: []
+[product] reopening index at ./index/development/product
+[product] register class Product with index product
+[product] default field list for index product: [:name, :brand, :supplier_names]
+[product] register class Product with index product
+[product] refusing re-registration of class Product
+[product] register class Product with index product
+[product] refusing re-registration of class Product
+[product] register class Product with index product
+[product] refusing re-registration of class Product
+index_for [Product(id: integer, name: string, brand_id: integer, type: string, description: text, origin: string, price: float, weight: float, created_at: datetime, updated_at: datetime, cover_image_file_name: string, cover_image_content_type: string, cover_image_file_size: integer, cover_image_updated_at: datetime)]
+options: {:limit=>nil, :offset=>nil}
+ar_options: {}
+[product] stored_fields: nil
+[product] query: CA
+-->+(name:ca brand:ca supplier_names:ca) +(class_name:Product)
+[product] now retrieving records from AR with options: {}
+[product] 0 results from AR: []
+Query: CA
+total hits: 0, results delivered: 0
+index_for [Product(id: integer, name: string, brand_id: integer, type: string, description: text, origin: string, price: float, weight: float, created_at: datetime, updated_at: datetime, cover_image_file_name: string, cover_image_content_type: string, cover_image_file_size: integer, cover_image_updated_at: datetime)]
+options: {:limit=>nil, :offset=>nil}
+ar_options: {}
+[product] stored_fields: nil
+[product] query: SALCHICHóN
+-->+(name:salchichón brand:salchichón supplier_names:salchichón) +(class_name:Product)
+[product] now retrieving records from AR with options: {}
+[product] 0 results from AR: []
+Query: SALCHICHóN
+total hits: 0, results delivered: 0
+index_for [Product(id: integer, name: string, brand_id: integer, type: string, description: text, origin: string, price: float, weight: float, created_at: datetime, updated_at: datetime, cover_image_file_name: string, cover_image_content_type: string, cover_image_file_size: integer, cover_image_updated_at: datetime)]
+options: {:limit=>nil, :offset=>nil}
+ar_options: {}
+[product] stored_fields: nil
+[product] query: NAVIDUL
+-->+(name:navidul brand:navidul supplier_names:navidul) +(class_name:Product)
+[product] now retrieving records from AR with options: {}
+[product] 0 results from AR: []
+Query: NAVIDUL
+total hits: 0, results delivered: 0
+[product] register class Product with index product
+[product] refusing re-registration of class Product
+index_for [Product(id: integer, name: string, brand_id: integer, type: string, description: text, origin: string, price: float, weight: float, created_at: datetime, updated_at: datetime, cover_image_file_name: string, cover_image_content_type: string, cover_image_file_size: integer, cover_image_updated_at: datetime)]
+options: {:limit=>nil, :offset=>nil}
+ar_options: {}
+[product] stored_fields: nil
+[product] query: A
+-->+() +(class_name:Product)
+[product] now retrieving records from AR with options: {}
+[product] 0 results from AR: []
+Query: A
+total hits: 0, results delivered: 0
+[product] register class Product with index product
+[product] refusing re-registration of class Product
+index_for [Product(id: integer, name: string, brand_id: integer, type: string, description: text, origin: string, price: float, weight: float, created_at: datetime, updated_at: datetime, cover_image_file_name: string, cover_image_content_type: string, cover_image_file_size: integer, cover_image_updated_at: datetime)]
+options: {:limit=>nil, :offset=>nil}
+ar_options: {}
+[product] stored_fields: nil
+[product] query: A
+-->+() +(class_name:Product)
+[product] now retrieving records from AR with options: {}
+[product] 0 results from AR: []
+Query: A
+total hits: 0, results delivered: 0
+index_for [Product(id: integer, name: string, brand_id: integer, type: string, description: text, origin: string, price: float, weight: float, created_at: datetime, updated_at: datetime, cover_image_file_name: string, cover_image_content_type: string, cover_image_file_size: integer, cover_image_updated_at: datetime)]
+options: {:limit=>nil, :offset=>nil}
+ar_options: {}
+[product] stored_fields: nil
+[product] query: 
+-->+() +(class_name:Product)
+[product] now retrieving records from AR with options: {}
+[product] 0 results from AR: []
+Query: 
+total hits: 0, results delivered: 0
+index_for [Product(id: integer, name: string, brand_id: integer, type: string, description: text, origin: string, price: float, weight: float, created_at: datetime, updated_at: datetime, cover_image_file_name: string, cover_image_content_type: string, cover_image_file_size: integer, cover_image_updated_at: datetime)]
+options: {:limit=>nil, :offset=>nil}
+ar_options: {}
+[product] stored_fields: nil
+[product] query: HOL
+-->+(name:hol brand:hol supplier_names:hol) +(class_name:Product)
+[product] now retrieving records from AR with options: {}
+[product] 0 results from AR: []
+Query: HOL
+total hits: 0, results delivered: 0
+index_for [Product(id: integer, name: string, brand_id: integer, type: string, description: text, origin: string, price: float, weight: float, created_at: datetime, updated_at: datetime, cover_image_file_name: string, cover_image_content_type: string, cover_image_file_size: integer, cover_image_updated_at: datetime)]
+options: {:limit=>nil, :offset=>nil}
+ar_options: {}
+[product] stored_fields: nil
+[product] query: HOLA
+-->+(name:hola brand:hola supplier_names:hola) +(class_name:Product)
+[product] now retrieving records from AR with options: {}
+[product] 0 results from AR: []
+Query: HOLA
+total hits: 0, results delivered: 0
+[product] register class Product with index product
+[product] refusing re-registration of class Product
+index_for [Product(id: integer, name: string, brand_id: integer, type: string, description: text, origin: string, price: float, weight: float, created_at: datetime, updated_at: datetime, cover_image_file_name: string, cover_image_content_type: string, cover_image_file_size: integer, cover_image_updated_at: datetime)]
+options: {:limit=>nil, :offset=>nil}
+ar_options: {}
+[product] stored_fields: nil
+[product] query: HOLA
+-->+(name:hola brand:hola supplier_names:hola) +(class_name:Product)
+[product] now retrieving records from AR with options: {}
+[product] 0 results from AR: []
+Query: HOLA
+total hits: 0, results delivered: 0
+index_for [Product(id: integer, name: string, brand_id: integer, type: string, description: text, origin: string, price: float, weight: float, created_at: datetime, updated_at: datetime, cover_image_file_name: string, cover_image_content_type: string, cover_image_file_size: integer, cover_image_updated_at: datetime)]
+options: {:limit=>nil, :offset=>nil}
+ar_options: {}
+[product] stored_fields: nil
+[product] query: HOLA
+-->+(name:hola brand:hola supplier_names:hola) +(class_name:Product)
+[product] now retrieving records from AR with options: {}
+[product] 0 results from AR: []
+Query: HOLA
+total hits: 0, results delivered: 0
+[product] register class Product with index product
+[product] refusing re-registration of class Product
+index_for [Product(id: integer, name: string, brand_id: integer, type: string, description: text, origin: string, price: float, weight: float, created_at: datetime, updated_at: datetime, cover_image_file_name: string, cover_image_content_type: string, cover_image_file_size: integer, cover_image_updated_at: datetime)]
+options: {:limit=>nil, :offset=>nil}
+ar_options: {}
+[product] stored_fields: nil
+[product] query: SALCHICHON
+-->+(name:salchichon brand:salchichon supplier_names:salchichon) +(class_name:Product)
+[product] now retrieving records from AR with options: {}
+[product] 0 results from AR: []
+Query: SALCHICHON
+total hits: 0, results delivered: 0

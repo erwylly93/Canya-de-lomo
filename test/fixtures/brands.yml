@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+brand1:
+  id:		1
+  name: 	'Marca 1'
+  street:	'Calle Marca 1'
+  city:		'Ciudad Marca 1'
+  province:	'Provincia Marca 1'
+  phone:	'987654321'
+  
+brand2:
+  id:		2
+  name: 	'Marca 2'
+  street:	'Calle Marca 2'
+  city:		'Ciudad Marca 2'
+  province:	'Provincia Marca 2'
+  phone:	'987654321'

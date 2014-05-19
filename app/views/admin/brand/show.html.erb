@@ -1,0 +1,11 @@
+<dl>
+	<dt>Nombre</dt>
+	<dd><%= @brand.name %></dd>
+	<dt>Dirección</dt>
+	<dd><%= @brand.street %>, <%= @brand.city %> (<%= @brand.province %>)</dd>
+	<dt>Teléfono</dt>
+	<dd><%= @brand.phone %></dd>
+</dl>
+
+<p><%= link_to 'Editar', :action => 'edit', :id => @brand %> | 
+	<%= link_to 'Atrás', :action => 'index' %></p>

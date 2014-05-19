@@ -1,0 +1,24 @@
+<% if @product.cover_image.exists? then %>
+    <dd><%= image_tag @product.cover_image.url(:resize) %></dd>
+  <% else %>
+    <dd><%= image_tag '/missing.png' %></dd>
+    <p>No hay una imagen disponible.</p>
+  <% end %>
+<dl>
+  <dt>Marca</dt>
+  <dd><%= @product.brand.name %></dd>
+  <dt>Proveedores</dt>
+  <dd><%= @product.supplier_names %></dd>
+  <dt>Tipo</dt>
+  <dd><%= @product.type %></dd>
+  <dt>Descripción</dt>
+  <dd><%= textilize @product.description %></dd>
+  <dt>Origen</dt>
+  <dd><%= @product.origin %></dd>
+  <dt>Precio</dt>
+  <dd><%= sprintf("%0.2f", @product.price) %> €</dd>
+  <dt>Peso</dt>
+  <dd><%= @product.weight %> Kg</dd>
+</dl>
+
+<p><%= link_to 'Volver al catálogo', :action => 'index' %> </p>

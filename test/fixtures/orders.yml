@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+  
+order1:
+  id:	1
+  email: 'email@email.com'
+  phone_number: '666112233'
+  ship_to_first_name: 'Firstname'
+  ship_to_last_name: 'Lastname'
+  ship_to_address: 'Address'
+  ship_to_city: 'City'
+  ship_to_postal_code: '00000'
+  ship_to_country_code: 'es'
+  customer_ip: '127.0.0.1'
+  status: 'processed'
+  error_message: ''
+  

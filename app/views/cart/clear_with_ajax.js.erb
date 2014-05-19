@@ -1,0 +1,5 @@
+jQuery.noConflict();
+jQuery('#shopping_cart').html("<%= j render :partial => 'cart/cart' %>");
+jQuery('#cart_notice').hide('fade', {}, 3000);
+if (jQuery('#loginlogout').css('display') == 'block')
+	jQuery('#loginlogout').fadeOut(0).delay(2500).fadeIn(500);

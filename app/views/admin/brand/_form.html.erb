@@ -1,0 +1,26 @@
+<% if @brand.errors.any? %>
+  <div id="errorExplanation">
+  <h2>No se ha podido crear una nueva marca
+  <br/>El formulario presenta <%= pluralize(@brand.errors.count, "error", "errores") %></h2>
+    <ul>
+      <% @brand.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<p><label for="brand_name">Nombre</label><br/>
+<%= text_field 'brand', 'name' %></p>
+
+<p><label for="brand_street">Calle</label><br/>
+<%= text_field 'brand', 'street' %></p>
+
+<p><label for="brand_city">Ciudad</label><br/>
+<%= text_field 'brand', 'city' %></p>
+
+<p><label for="brand_province">Provincia</label><br/>
+<%= text_field 'brand', 'province' %></p>
+
+<p><label for="brand_phone">Teléfono</label><br/>
+<%= text_field 'brand', 'phone' %></p>

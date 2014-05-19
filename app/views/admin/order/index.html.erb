@@ -1,0 +1,85 @@
+<%= render :partial => 'navigation' %>
+
+<% if @orders == [] %>
+  <% 
+    estado = case @status
+      when "open" then "abiertos"
+      when "processed" then "procesados"
+      when "closed" then "cerrados"
+      when "failed" then "fallidos"
+    end 
+  %>
+  <h3><%= "No hay pedidos #{estado}." %></h3>
+<% else %>
+  <table>
+    <tr>
+      <th style="padding-bottom:13px;">
+        <span>
+          ID
+          <div style="display:inline-block;position:relative;top:5px;">
+            <a style="display:block;padding:-3px;margin:0;text-decoration:none" href="?id=<%= @status %>&sort_by=id">▴</a>
+            <a style="display:block;padding:-3px;margin:-5px 0;text-decoration:none" href="?id=<%= @status %>&sort_by=id DESC">▾</a>
+          </div>
+        </span>
+      </th>
+      <th style="padding-bottom:13px;">
+        <span>
+          Estado
+          <div style="display:inline-block;position:relative;top:5px;">
+            <a style="display:block;padding:-3px;margin:0;text-decoration:none" href="?id=<%= @status %>&sort_by=status">▴</a>
+            <a style="display:block;padding:-3px;margin:-5px 0;text-decoration:none" href="?id=<%= @status %>&sort_by=status DESC">▾</a>
+          </div>
+        </span>
+      </th>
+      <th>Total</th>
+      <th style="padding-right:10px;">Nº de distintos productos</th>
+      <th style="padding-bottom:13px;padding-right:10px;">
+        <span>
+          Fecha de creación
+          <div style="display:inline-block;position:relative;top:5px;">
+            <a style="display:block;padding:-3px;margin:0;text-decoration:none" href="?id=<%= @status %>&sort_by=created_at">▴</a>
+            <a style="display:block;padding:-3px;margin:-5px 0;text-decoration:none" href="?id=<%= @status %>&sort_by=created_at DESC">▾</a>
+          </div>
+        </span>
+      </th>
+      <th style="padding-bottom:13px;">
+        <span>
+          Fecha de actualización
+          <div style="display:inline-block;position:relative;top:5px;">
+            <a style="display:block;padding:-3px;margin:0;text-decoration:none" href="?id=<%= @status %>&sort_by=updated_at">▴</a>
+            <a style="display:block;padding:-3px;margin:-5px 0;text-decoration:none" href="?id=<%= @status %>&sort_by=updated_at DESC">▾</a>
+          </div>
+        </span>
+      </th>
+      <th></th>
+    </tr>
+  <% for order in @orders %>
+    <tr>
+      <td align="center"><%= order.id %></td>
+      <% 
+      	estado = case order.status
+	        when "open" then "Abierto"
+	        when "processed" then "Procesado"
+	        when "closed" then "Cerrado"
+	        when "failed" then "Fallido"
+	      end 
+	    %>
+      <td align="center"><%= estado %></td>
+      <td align="center"><%= order.total %> €</td>
+      <td align="center"><%= order.products.size %></td>
+      <td align="center"><%= order.created_at.localtime.strftime("%d-%m-%Y %H:%M") %></td>
+      <td align="center"><%= order.updated_at.localtime.strftime("%d-%m-%Y %H:%M") %></td>
+      <td><%= link_to 'Mostrar', :action => 'show', :id => order %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <% if @orders.total_pages > 1 %>
+    <br/>
+    <%= 'Ver página:' %>
+    <%= will_paginate @orders, :page_links => true, :link_separator => ' ', :container => false,
+                             :previous_label => '<', :next_label => '>' %>
+  <% end %>
+
+  <p></p>
+<% end %>

@@ -1,0 +1,55 @@
+<%= render :partial => 'navigation' %>
+
+<h3>Total del pedido: <%= @order.total %> €</h3>
+<h3>Total con IVA (10%): <%= @order.total * 0.9 %> €</h3>
+
+<h2>Información de contacto</h2>
+<dl>
+  <dt>E-mail</dt>
+  <dd><%= @order.email %></dd>
+  <dt>Teléfono</dt>
+  <dd><%= @order.phone_number %></dd>
+</dl>
+
+<h2>Dirección de envío</h2>
+<dl>
+  <dt>Nombre</dt>
+  <dd><%= @order.ship_to_first_name %></dd>
+  <dt>Apellidos</dt>
+  <dd><%= @order.ship_to_last_name %></dd>
+  <dt>Dirección</dt>
+  <dd><%= @order.ship_to_address %></dd>
+  <dt>Ciudad</dt>
+  <dd><%= @order.ship_to_city %></dd>
+  <dt>Código postal</dt>
+  <dd><%= @order.ship_to_postal_code %></dd>
+  <dt>País</dt>
+  <dd><%= ISO3166::Country.find_country_by_alpha2(@order.ship_to_country_code).name %></dd>
+</dl>
+
+<h2>Detalles del pedido</h2>
+<% for item in @order.order_items %>
+  <%= link_to item.product.name, :controller => 'admin/product', :action => 'show', :id => item.product.id %>
+  <%= pluralize(item.amount, "producto", "productos") %>, <%= item.price * item.amount %> €<br/>
+<% end %>
+
+<h2>Estado del pedido</h2>
+<dl>
+  <dt>Estado</dt>
+  <% 
+  	estado = case @order.status
+        when "open" then "Abierto"
+        when "processed" then "Procesado"
+        when "closed" then "Cerrado"
+        when "failed" then "Fallido"
+      end 
+  %>
+  <dd><%= estado %></dd>
+  <% if @order.failed? %>
+    <dt>Error</dt>
+    <dd><%= @order.error_message %></dd>
+  <% end %>
+</dl>
+
+<%= button_to 'Cerrar pedido', {:action => 'close', :id => @order},
+              :confirm => "¿Deseas cerrar el pedido ##{@order.id}?"  if @order.processed? %>

@@ -1,6 +1,0 @@
-<%= link_to item.product.name, :action => 'show', :controller => 'catalog', :id => item.product.id %>
-
-<%= pluralize item.amount, "producto", "productos" %>, <%= sprintf "%0.2f €", item.price * item.amount %>
-
-(<%= link_to '-', {:controller => 'cart', :action => 'remove', :id => item.product, :remote => true}, 
-    	:style =>'font-size: 20px;' %>)

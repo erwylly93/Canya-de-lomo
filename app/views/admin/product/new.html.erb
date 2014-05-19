@@ -1,6 +1,0 @@
-<%= form_tag "/admin/product/create?id=#{@product.id}", :multipart => true do %>
-  <%= render :partial => 'form' %>   
-  <%= submit_tag 'Crear producto' %>
-<% end %>
-
-<%= link_to 'Atrás', :action => 'index' %>

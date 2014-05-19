@@ -1,6 +1,0 @@
-<p><%= link_to 'Buscar producto', :action => 'search' %></p>
-<p><%= link_to 'Últimos productos', :action => 'latest' %></p>
-<p><a href="catalog/rss.xml">Suscríbete a nuestro canal</a></p>
-<%= render :partial => 'products' %>
-<%= will_paginate @products, :page_links => false, :link_separator => ' | ',
-                          :previous_label => 'Anterior', :next_label => 'Siguiente' %>

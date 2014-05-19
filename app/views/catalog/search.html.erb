@@ -1,8 +1,0 @@
-<%= render :partial => 'search_box' %>
-
-<% if @products %>
-	<p>La búsqueda "<%= params[:search][:name_contains] %>" produjo <%= pluralize @products.size, "resultado" %>:</p>
-	<%= render(:partial => "products") %>
-<% end %>
-
-<p><%= link_to 'Volver al catálogo', :action => 'index' %></p>

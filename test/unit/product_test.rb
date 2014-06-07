@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ProductTest < ActiveSupport::TestCase
- 
+  fixtures :products
  	def test_name
  		product = Product.new(:name => 'Zorro curado')
  		assert_equal 'Zorro curado' , product.getname
@@ -31,27 +31,38 @@ class ProductTest < ActiveSupport::TestCase
  		product = Product.new(:name => 'Zorro curado', :description => 'Zorruno weno weno')
  		assert_equal 'Zorruno weno weno' , product.getdescription
  	end
-=begin 	
+ 	 	
  	def test_ferret
 		 assert Product.search :name_contains => 'Producto 1'
 
-    assert_difference Product, :count do
-      product = Product.new :name => 'Producto 1',
+		 assert_difference 'Product.count' do
+      product = Product.new :name => 'Producto test_ferret',
 														:type => 'Tipo 1',
 														:description => 'Descripcion producto 1',
 														:origin => 'Origen producto 1',
 														:price => 12.0,
 														:weight => 2.0
-      product.suppliers << Supplier.create(:name => "Proveedor 41")
+      product.suppliers << Supplier.create(:name => 'SupplierFerret', :street => 'C/Tortugo', :city => 'Tortuga', :province => 'Tortugalandia', :phone => '987654321')
       product.brand = Brand.find(1)
       assert product.valid?
       product.save
+     end
 
-      assert_equal 1, Product.search(:name_contains => 'Producto').count
-      assert_equal 1, Product.search(:suppliers_name_contains => 'Proveedor').count
-		end
+     assert_equal 1, Product.search(:name_contains => 'Producto_test_ferret').count
+     assert_equal 1, Supplier.search(:name_contains => 'SupplierFerret').count
 	end
-=end
 
+	def test_tagging
+		product = products(:product1)
+		
+		product.tag_list.add("awe", "some")
+		product.save
+		product.reload
+		assert Product.tagged_with('awe')
+		assert Product.tagged_with('some')
+		assert_equal 2, product.tag_list.size
+		assert_equal ['awe', 'some'], product.tag_list
+		assert_equal 1, Product.tagged_with([ 'awe', 'some' ]).size
+	end
 end
 

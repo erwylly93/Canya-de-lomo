@@ -45,6 +45,9 @@ gem 'eu_central_bank', '0.3.5' # cambio de divisa
 # Para la seguridad
 gem 'authlogic', '3.2.0'
 
+# Para las etiquetas de recomendacion
+gem 'acts-as-taggable-on'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

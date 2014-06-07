@@ -7,6 +7,7 @@ class Admin::ProductController < Admin::AuthenticatedController
 
   def create
     @product = Product.new(params[:product])
+		@product.tag_list.add(params[:tags], parse: true)
     if @product.save
       flash[:notice] = "El producto #{@product.name} ha sido creado"
       redirect_to :action => 'index'
@@ -25,7 +26,10 @@ class Admin::ProductController < Admin::AuthenticatedController
 
   def update
     @product = Product.find(params[:id])
+    @product.tag_list.remove(@product.tag_list.split(","), parse: true);
+    @product.tag_list.add(params[:tags], parse: true)
     if @product.update_attributes(params[:product])
+			Tag.clean
       flash[:notice] = "El producto ha sido actualizado."
       redirect_to :action => 'show', :id => @product
     else
@@ -57,5 +61,6 @@ private
   def load_data
     @suppliers = Supplier.find(:all)
     @brands = Brand.find(:all)
+		@tags = Tag.find(:all)
   end
 end

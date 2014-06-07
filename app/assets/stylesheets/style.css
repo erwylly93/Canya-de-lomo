@@ -233,3 +233,45 @@ td {
 #order_card_verification_value {
   width: 50px;
 }
+
+/* TAGS */
+ul.autocompleter-choices {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border: 1px solid #7c7c7c;
+	border-left-color: #c3c3c3;
+	border-right-color: #c3c3c3;
+	border-bottom-color: #ddd;
+	background-color: #fff;
+	text-align: left;
+	font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
+	z-index: 50;
+	background-color: #fff;
+}
+
+ul.autocompleter-choices li:hover {
+	text-decoration: underline;
+}
+#recommended {
+border-left: 3px solid #666;
+background-color: white;
+position: fixed;
+bottom: 0;
+right: 0;
+width: 200px;
+height: 100%;
+padding: 5px 10px;
+}
+
+#recommended {
+border-left: 3px solid #666;
+background-color: white;
+position: fixed;
+bottom: 0;
+right: 0;
+width: 200px;
+height: 100%;
+padding: 5px 10px;
+}

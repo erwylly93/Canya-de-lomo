@@ -7,6 +7,8 @@
 <dl>
   <dt>Marca</dt>
   <dd><%= @product.brand.name %></dd>
+  <dt>Tags</dt>
+	<dd><%== display_tags @product -%></dd>
   <dt>Proveedores</dt>
   <dd><%= @product.supplier_names %></dd>
   <dt>Tipo</dt>
@@ -21,4 +23,13 @@
   <dd><%= @product.weight %> Kg</dd>
 </dl>
 
+<% if @product.tags.size > 0 %>
+<div id="recommended">
+<h2>Recomendaciones</h2>
+<h4>Productos</h4>
+<% for product in @product.find_related_tags %>
+<%= link_to product.name, :action => 'show', :id => product.id %><br/>
+<% end %>
+<% end %>
+<br/>
 <p><%= link_to 'Volver al catálogo', :action => 'index' %> </p>

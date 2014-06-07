@@ -1,0 +1,7 @@
+<% for tag in @tags %>
+<%= link_to tag.name, :action => 'show', :id => tag.id %><br/>
+<% end %>
+<p>
+<%= will_paginate @tags, :page_links => false, :link_separator => ' | ',
+                          :previous_label => 'Anterior', :next_label => 'Siguiente' %>
+</p>

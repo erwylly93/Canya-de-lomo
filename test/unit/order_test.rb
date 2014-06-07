@@ -5,7 +5,6 @@ class OrderTest < ActiveSupport::TestCase
   #   assert true
   # end
   
-  
   test "create_valid_order" do
     order = Order.new(
       # Contact information
@@ -41,7 +40,7 @@ class OrderTest < ActiveSupport::TestCase
     order.close
     assert order.closed?
   end
-	
+
 	test "validations" do
     order = Order.new
     assert_equal false, order.save

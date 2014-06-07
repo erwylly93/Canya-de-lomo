@@ -15,6 +15,20 @@
 </div>
 
 <div class="field">
+  <p>
+		<label for="tags">Tags</label><br/>
+		<input type="text" id="tags" autocomplete="off" size="50" name="tags" value="<%= @product.tags.collect{|tag| tag.name }.join(", ") if @product.tags -%>">
+	</p>
+</div>
+<script type="text/javascript" language="javascript" charset="utf-8">
+	new Autocompleter.Local('tags', new Array(<%== @tags.collect{|tag| "\"#{ tag.name }\""}.join(", ") if @tags %>), {
+  minLength: 0, //Wait for at least one character
+	selectMod: 'type-ahead', //Instant completion
+	multiple: true
+});
+</script>
+
+<div class="field">
   <p><label for="product_brand">Marca</label><br/>
   <%= collection_select :product, :brand_id, @brands, :id, :name %></p>
 </div>

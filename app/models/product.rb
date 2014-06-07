@@ -1,4 +1,6 @@
 class Product < ActiveRecord::Base
+	acts_as_taggable # Alias for acts_as_taggable_on :tags
+
 	attr_accessible :name, :brand_id, :brand, :type, :description, :origin, :price, 
 					:cover_image, :suppliers, :supplier_ids, :weight
 

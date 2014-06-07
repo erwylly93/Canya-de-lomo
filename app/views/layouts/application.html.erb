@@ -7,12 +7,15 @@
   <% if @cart || (@page_title && (@page_title.include?('Lista') || @page_title.include?('Detalles'))) || controller_name == 'order' %>
     <%= javascript_include_tag "application" %>
   <% end %>
+  <% if controller_name == 'product' && (@page_title.include?('Crear nuevo producto') || @page_title.include?('Editar producto')) %>
+		<%= javascript_include_tag "autocompleter" %>
+  <% end %>
 </head>
 <body>
    <div id="header">
     <h1 id="logo">Caña de Lomo&trade;</h1>
     <h2 id="slogan">Productos ibéricos</h2>
-    <% if !@cart %>
+    <% if !(controller_name == 'catalog' and params['action'] == 'show') and !@cart  %>
       <p id="loginlogout">
         <% if current_user %>
           <strong><%= link_to current_user.login, :controller => '/user', :action => :show %></strong>
@@ -37,6 +40,7 @@
       <li><a href="/admin/brand">Marcas</a>&nbsp;|&nbsp;</li>
       <li><a href="/admin/supplier">Proveedores</a>&nbsp;|&nbsp;</li>
       <li><a href="/admin/product">Productos</a>&nbsp;|&nbsp;</li>
+      <li><a href="/tag/list">Tags</a>&nbsp;|&nbsp;</li>
       <li><a href="/admin/order">Pedidos</a>&nbsp;|&nbsp;</li>
       <li><a href="/catalog">Catálogo</a>&nbsp;|&nbsp;</li>
       <li><a href="/about">Sobre nosotros</a>&nbsp;</li>

@@ -20,8 +20,8 @@ class ProductTest < ActionDispatch::IntegrationTest
     george = new_session_as(:george)
 
 	# George creates a new product called 'Producto 1'
-    new_product_ruby = george.add_product :product => {
-      :name => 'Producto 1',
+    new_product_ruby = george.add_product :tags => 'Tag1, Tag2', :product => {
+      :name => 'Producto nuevo',
       :brand_id => brand.id,
       :type => 'Tipo 1',
       :description => 'Descripcion producto 1',
@@ -38,7 +38,7 @@ class ProductTest < ActionDispatch::IntegrationTest
     george.show_product new_product_ruby
 
 	# George edits 'Producto 1'
-    george.edit_product new_product_ruby, :product => {
+    george.edit_product new_product_ruby, :tags => 'Tag3', :product => {
       :name => 'Producto 2',
       :type => 'Tipo 2',
       :description => 'Descripcion producto 2',
@@ -79,7 +79,9 @@ class ProductTest < ActionDispatch::IntegrationTest
       get "/admin/product/index/?page=#{page}"
       
       assert_tag :tag => 'td', :content => parameters[:product][:name]
-      return Product.find_by_name(parameters[:product][:name])
+      product = Product.find_by_name(parameters[:product][:name])
+			assert_equal product.tags.size, parameters[:tags].split(",").size
+      return product
     end
 
     def edit_product(product, parameters)
@@ -92,6 +94,9 @@ class ProductTest < ActionDispatch::IntegrationTest
       follow_redirect!
       assert_response :success
       assert_template 'admin/product/show'
+      
+      product.reload
+			assert_equal parameters[:tags].split(',').size, product.tags.size
     end
 
     def delete_product(product)

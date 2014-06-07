@@ -1,5 +1,10 @@
 Eshop::Application.routes.draw do
 
+  get "tag/list"
+  match 'tag/list/:id' => 'tag#list'
+  get "tag/show"
+  match 'tag/show/:id' => 'tag#show'
+
   root to: 'catalog#index'
 
   match 'catalog' => 'catalog#index'
@@ -18,6 +23,7 @@ Eshop::Application.routes.draw do
   get 'admin/supplier/new'
   post 'admin/supplier/create'
   get 'admin/supplier/edit'
+  match 'admin/supplier/edit/:id' => 'admin/supplier#edit'
   post 'admin/supplier/update'
   post 'admin/supplier/destroy'
   get 'admin/supplier/show'
@@ -27,6 +33,7 @@ Eshop::Application.routes.draw do
   get 'admin/brand/new'
   post 'admin/brand/create'
   get 'admin/brand/edit'
+  match 'admin/brand/edit/:id' => 'admin/brand#edit'
   post 'admin/brand/update'
   post 'admin/brand/destroy'
   get 'admin/brand/show'
@@ -36,6 +43,7 @@ Eshop::Application.routes.draw do
   get 'admin/product/new'
   post 'admin/product/create'
   get 'admin/product/edit'
+  match 'admin/product/edit/:id' => 'admin/product#edit'
   post 'admin/product/update'
   post 'admin/product/destroy'
   get 'admin/product/show'
@@ -44,8 +52,10 @@ Eshop::Application.routes.draw do
 
   get 'cart/add'
   post 'cart/add'
+  match 'cart/add/:id' => 'cart#add'
   get 'cart/remove'
   post 'cart/remove'
+  match 'cart/remove/:id' => 'cart#remove'
   get 'cart/clear'
   post 'cart/clear'
 

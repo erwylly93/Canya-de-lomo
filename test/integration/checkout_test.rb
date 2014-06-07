@@ -41,4 +41,5 @@ fixtures :suppliers, :brands, :products
     assert_response :redirect
     assert_redirected_to '/checkout/thank_you'
 	end
+
 end

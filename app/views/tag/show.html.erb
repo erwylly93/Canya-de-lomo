@@ -1,0 +1,3 @@
+<% for product in @products %>
+<%= link_to product.name, :controller => 'catalog', :action => 'show', :id => product %><br/>
+<% end %>
